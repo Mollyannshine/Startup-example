@@ -24,6 +24,9 @@ Key Features
 
 Design
 
+![IMG_1328](https://github.com/Mollyannshine/Startup-example/assets/131918682/e8f1360a-f78e-44cb-adf0-a70f7f8dd32b)
+
+
 
 Technologies
 HTML: Proper HTML structure. Two HTML pages. First the main page featuring the main map and login, and a second for creating a dog sighting. 
