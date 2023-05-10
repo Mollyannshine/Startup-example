@@ -41,7 +41,7 @@ DB: stores users, sightings, and dog objects in database.
 
 Login: Users cannot comment or post unless logged in. Register and login users. Credentials stores in database. 
 
-WebSocket: As each user comments, their comments are shared with other users 
+WebSocket: As each user, comments uploads a new post, or creates a new dog object, their changes are shared with other users 
 
 React: Application ported to use the React web framework 
 
