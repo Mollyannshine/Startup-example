@@ -3,7 +3,7 @@ An example of a startup
 
 
 Startup deliverable - specification
-Elevator Pitch
+Elevator Pitch/n
 Don’t you just love petting dogs you see out for walks? Don’t you wish there was a way to see and get to know all the dogs in your neighborhood? With this application, you’ll be able upload every instance of a dog you encounter and upload it to a map, as well as be able to view other users’ dog sightings. Users will be able to comment on your sighting and share the dog’s name or comment on their encounter with the dog! 
 
 Key Features 
