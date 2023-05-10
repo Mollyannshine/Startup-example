@@ -24,7 +24,7 @@ Key Features
 
 Design
 
-![IMG_1328](https://github.com/Mollyannshine/Startup-example/assets/131918682/e8f1360a-f78e-44cb-adf0-a70f7f8dd32b)
+![260design](https://github.com/Mollyannshine/Startup-example/assets/131918682/cc278d25-e029-47d8-8f4f-238cbf9a4929)
 
 
 
