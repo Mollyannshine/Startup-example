@@ -53,3 +53,14 @@ I added the application structure
 - **Login** - Input boxes and submit button for login.
 - **Database** - The map on the homepage will pull from the database.
 - **WebSocket** - Not sure...unimplimented.
+
+## CSS deliverable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- **Header, footer, and main content body** - All present on the homepage. Note that the popup page does not have all of these, because it is only supposed to be a pop up, and should be transitioned to such with the JS deliverable.
+- **Navigation elements** - The sighting button takes you to the popup page. From there, the back and submit buttons take you back home. 
+- **Responsive to window resizing** - Resizes well enough, mobile version is fair.
+- **Application elements** - Will be less blank looking once the map is in. I have buttons and filters though.
+- **Application text content** - Consistent fonts, descriptive labels.
+- **Application images** - Nice dog icon. Might add more dogs pictures.
