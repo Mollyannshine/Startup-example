@@ -51,7 +51,7 @@ function mongoAddSighting(sighting) {
 }
 function mongoRemoveSighting() {}
 function mongoGetMapData() {}
-function authenticate() {}
+function authenticate() { return true; }
 // DB setup
 
 // Return the application's default page if the path is unknown
