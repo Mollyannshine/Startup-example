@@ -64,3 +64,41 @@ For this deliverable I properly styled the application into its final appearance
 - **Application elements** - Will be less blank looking once the map is in. I have buttons and filters though.
 - **Application text content** - Consistent fonts, descriptive labels.
 - **Application images** - Nice dog icon. Might add more dogs pictures.
+
+## JavaScript deliverable
+
+For this deliverable I made my application functional to track dog sightings.
+
+- **login** - When you click the button to log in, you can log in. It will display your name.
+- **database** - Display the dog sightings on the map. implemented through MongoDB.
+- **WebSocket** - I used the setInterval function to periodically display a random stat. Later this stat will be real, and pushed to users when it changes.
+- **application logic** - Submit dog sightings and see them displayed on a real map!
+
+## Service deliverable
+
+For this deliverable I created an HTTP service to host my frontend and provide backend endpoints.
+
+- **Node.js/Express HTTP service** - done!
+- **Static middleware for frontend** - done!
+- **Calls to third party endpoints** - Random dog picture, top right.
+- **Backend service endpoints** - Submit sighting, update map, authentication.
+- **Frontend calls service endpoints** - I did this using the fetch function.
+
+## DB deliverable
+
+For this deliverable I stored and retrieved data from MongoDB.
+
+- **MongoDB Atlas database created** - done!
+- **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
+- **Stores data in MongoDB** - done!
+ 
+### Note that the lattitude and longitude need to be entered correctly, or the map may break when loading invalid data from MongoDB. I should add input validation. Erstwhile, do `lat, long`.
+
+## Login deliverable
+
+For this deliverable I added user registration and authentication.
+
+- **User registration** - Creates a new account in the database.
+- **existing user** - Verifies the user's name and password from data stored in the database
+- **Use MongoDB to store credentials** - done!
+- **Restricts functionality** - You cannot add sightings until you have logged in (there's no message yet, but the console logs 'no auth').
