@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
-
+const { MongoClient } = require('mongodb');
+const config = require('./dbConfig.json');
+const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
+const client = new MongoClient(url);
+const sightingsCollection = client.db("startup").collection("dogs");
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // JSON body parsing using built-in middleware
-// app.use(express.json());
+// When this was commented out req.body was undefined
+app.use(express.json());
 
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
@@ -18,7 +23,7 @@ app.use(`/api`, apiRouter);
 // Routes go first, then their helpers last
 
 apiRouter.post('/addSighting', (req, res) => {
-  console.log(req.body);
+  console.log("addSighting request body:\n", req.body);
   mongoAddSighting(req.body);
   res.status(201).json({ placeholder: true });
 });
@@ -28,9 +33,10 @@ apiRouter.delete('/removeSighting', (req, res) => {
   res.status(200).json({ placeholder: true });
 });
 
-apiRouter.get('/getMapData', (req, res) => {
-  mongoGetMapData();
-  res.status(200).json({ placeholder: true });
+apiRouter.get('/getMapData', async (req, res) => {
+  const data = await mongoGetMapData();
+  console.log("shipping map data:\n", data);
+  res.status(200).json(data);
 });
 
 apiRouter.post('/login', (req, res) => {
@@ -48,9 +54,13 @@ apiRouter.post('/login', (req, res) => {
 function mongoAddSighting(sighting) {
   // Note that localStorage is only defined on the client.
   // localStorage.setItem(sighting.time, sighting);
+  console.log("adding sighting:\n", sighting);
+  sightingsCollection.insertOne(sighting);
 }
 function mongoRemoveSighting() {}
-function mongoGetMapData() {}
+function mongoGetMapData() {
+  return sightingsCollection.find().toArray();
+}
 function authenticate() { return true; }
 // DB setup
 

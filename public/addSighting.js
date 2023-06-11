@@ -1,8 +1,5 @@
 'use strict'
 
-const domain = "http://localhost:4000";
-// const domain = "https://startup.pupcake.click";
-
 // Submitting new sighting
 const nameEl = document.querySelector("#name");
 const locationEl = document.querySelector("#location");
@@ -11,22 +8,19 @@ const breedEl = document.querySelector("#breed");
 const submitBtn = document.querySelector("#submit");
 
 submitBtn.addEventListener('click', (event) => {
-  console.log('clicked submit')
   const sighting = JSON.stringify({ 
       name: nameEl.value,
-      location: locationEl.value,
+      lat: locationEl.value.split(', ')[0],
+      lng: locationEl.value.split(', ')[1],
       time: timeEl.value,
       breed: breedEl.value,
   })
 
-  localStorage.setItem(sighting.time, sighting);
-  console.log(localStorage.getItem(sighting.time));
-
-  fetch(`${domain}/api/addSighting`, {
-    method: `POST`,
+  const rq = {
+    method: "POST",
     body: sighting,
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  }).then((r) => console.log(r));
+    headers: { 'Content-type': 'application/json; charset=UTF-8' },
+  }
+  console.log("sending sighting:\n", sighting);
+  fetch(`/api/addSighting`, rq).then((r) => console.log(r));
 })
