@@ -1,7 +1,13 @@
 'use strict'
 
-const domain = "http://localhost:4000";
-// const domain = "https://startup.pupcake.click";
+async function getRandomDog() {
+  const dogPicEl = document.getElementById("dog-pic");
+  const res = await fetch("https://dog.ceo/api/breeds/image/random", { method: "GET" })
+  const pic = await res.json();
+  dogPicEl.src = pic.message;
+}
+
+getRandomDog();
 
 // Application logic
 var map = L.map('map').setView([40.2474025, -111.6541366], 13);
