@@ -10,18 +10,25 @@
         <link rel="stylesheet" href="index.css"></link>
         <script defer src="ranDog.js"></script>
         <script defer src="map.js"></script>
-        <script defer src="loginOld.js"></script>
+        <script defer src="login.js"></script>
     </head>
     <body class="container 100-vh">
         <header class="row">
-            <div id="sign-in" class="col">
+            <div class="col">
                 <!-- Sign in goes here -->
                 <div class="row">
                     <label class="col form-label" for="username">Username:</label>
                     <input id="username" class="col form-control" id="username" name="varusername" required>
+                </div>
+                <div class="row">
                     <label class="col form-label" for="password">Password:</label>
                     <input id="password" class="col form-control" id="password" name="varpassword" required>
+                </div>
+                <div class="row">
                     <button id="login" class="col-2 btn btn-primary" type="submit">Log in</button>
+                    <button id="sign-up" class="col-2 btn btn-primary" type="submit">Sign up</button>
+                </div>
+                <div id="sign-in" class="row">
                 </div>
             </div>
             <div class="col-3">
