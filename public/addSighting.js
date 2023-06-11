@@ -1,6 +1,5 @@
 'use strict'
 
-// Submitting new sighting
 const nameEl = document.querySelector("#name");
 const locationEl = document.querySelector("#location");
 const timeEl = document.querySelector("#time");
