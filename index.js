@@ -30,7 +30,7 @@ app.use(`/api`, apiRouter);
 // Routes go first, then their helpers last
 
 apiRouter.post('/addSighting', (req, res) => {
-  console.log("addSighting request body:\n", req.body);
+  console.log("addSighting request cookies:\n", req.cookies);
   mongoAddSighting(req.body);
   res.status(201).json({ placeholder: true });
 });
@@ -42,17 +42,7 @@ apiRouter.delete('/removeSighting', (req, res) => {
 
 apiRouter.get('/getMapData', async (req, res) => {
   const data = await mongoGetMapData();
-  console.log("shipping map data:\n", data);
   res.status(200).json(data);
-});
-
-apiRouter.post('/login', (req, res) => {
-  const authStatus = authenticate();
-  if (authStatus) {
-    res.status(200).json({ placeholder: true });
-  } else {
-    res.status(403).json({ placeholder: true });
-  }
 });
 
 // Add endpoint to filter map
@@ -120,9 +110,6 @@ function setAuthCookie(res, authToken) {
 
 // Helpers
 function mongoAddSighting(sighting) {
-  // Note that localStorage is only defined on the client.
-  // localStorage.setItem(sighting.time, sighting);
-  console.log("adding sighting:\n", sighting);
   sightingsCollection.insertOne(sighting);
 }
 function mongoRemoveSighting() {}

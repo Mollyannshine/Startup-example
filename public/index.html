@@ -11,6 +11,7 @@
         <script defer src="ranDog.js"></script>
         <script defer src="map.js"></script>
         <script defer src="login.js"></script>
+        <script defer src="websocket.js"></script>
     </head>
     <body class="container 100-vh">
         <header class="row">
@@ -45,12 +46,7 @@
             <div class="col-3">
                 <!-- Upload sighting, filters -->
                 <a href="popup.html"><button class="btn btn-primary" type="sighting">Upload a dog sighting</button></a>
-                <select class="form-select" aria-label="Default select example"id="filters">
-                    <option selected>Filter</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                <p id="socket-alerts">WebSocket Here</p>
             </div>
         </main>
         <footer class="row">
