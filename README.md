@@ -102,3 +102,12 @@ For this deliverable I added user registration and authentication.
 - **existing user** - Verifies the user's name and password from data stored in the database
 - **Use MongoDB to store credentials** - done!
 - **Restricts functionality** - You cannot add sightings until you have logged in (there's no message yet, but the console logs 'no auth').
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to inform users of dog sightings in real time.
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - In the right bar, whenever a dog sighting is uploaded.
