@@ -1,5 +1,7 @@
 'use strict'
 
+import { sendMessage } from './websocket.mjs';
+
 const nameEl = document.querySelector("#name");
 const locationEl = document.querySelector("#location");
 const timeEl = document.querySelector("#time");
@@ -21,8 +23,13 @@ submitBtn.addEventListener('click', async (event) => {
     body: sighting,
     headers: { 'Content-type': 'application/json; charset=UTF-8' },
   }
+
   console.log("sending sighting:\n", sighting);
   fetch(`/api/addSighting`, rq).then((r) => console.log(r));
+
+  console.log(`socketing ${breedEl.value}`);
+  sendMessage(breedEl.value);
+
   } else {
     console.log("no auth");
   }

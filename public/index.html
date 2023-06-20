@@ -11,8 +11,8 @@
         <script defer src="ranDog.js"></script>
         <script defer src="map.js"></script>
         <script defer src="login.js"></script>
-        <script defer src="websocket.js"></script>
-        <script defer src="addSighting.js"></script>
+        <script defer type="module" src="websocket.mjs"></script>
+        <script defer type="module" src="addSighting.mjs"></script>
     </head>
     <body class="container 100-vh">
         <header class="row">
@@ -82,7 +82,7 @@
                 </div>
               </div>
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Upload a dog sighting</button>
-              <p id="socket-alerts">WebSocket Here</p>
+              <p id="socket-alerts">Sign in and upload sightings to trigger webSocket</p>
             </div>
         </main>
         <footer class="row">

@@ -9,9 +9,13 @@ const userCollection = client.db("startup").collection("users");
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
+const { WebSocketServer } = require('ws');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
+const server = app.listen(port, () => {
+  console.log(`Listening on ${port}`);
+});
 
 // JSON body parsing using built-in middleware
 // When this was commented out req.body was undefined
@@ -125,7 +129,64 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+// Websocket
+// Create a websocket object
+const wss = new WebSocketServer({ noServer: true });
+
+// Handle the protocol upgrade from HTTP to WebSocket
+server.on('upgrade', (request, socket, head) => {
+  wss.handleUpgrade(request, socket, head, function done(ws) {
+    wss.emit('connection', ws, request);
+  });
 });
 
+// Keep track of all the connections so we can forward messages
+let connections = [];
+
+wss.on('connection', (ws) => {
+  const connection = { id: connections.length + 1, alive: true, ws: ws };
+  connections.push(connection);
+  console.log('connections are:');
+  connections.forEach((c) => console.log('    ', c.id));
+  console.log(`${connections}`);
+
+  // Forward messages to everyone except the sender
+  ws.on('message', function message(data) {
+    console.log(`got message ${data}\n    from ${connection.id}`);
+    connections.forEach((c) => {
+      console.log(`con ${c.id}`);
+      if (c.id !== connection.id) {
+        console.log(`forwarding ${data}\n    to ${c.id}`);
+        c.ws.send(data);
+      }
+    });
+  });
+
+  // Remove the closed connection so we don't try to forward anymore
+  ws.on('close', () => {
+    connections.findIndex((o, i) => {
+      if (o.id === connection.id) {
+        connections.splice(i, 1);
+        return true;
+      }
+    });
+  });
+
+  // Respond to pong messages by marking the connection alive
+  ws.on('pong', () => {
+    connection.alive = true;
+  });
+});
+
+// Keep active connections alive
+setInterval(() => {
+  connections.forEach((c) => {
+    // Kill any connection that didn't respond to the ping last time
+    if (!c.alive) {
+      c.ws.terminate();
+    } else {
+      c.alive = false;
+      c.ws.ping();
+    }
+  });
+}, 10000);
