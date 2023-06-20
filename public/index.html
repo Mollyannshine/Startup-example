@@ -12,6 +12,7 @@
         <script defer src="map.js"></script>
         <script defer src="login.js"></script>
         <script defer src="websocket.js"></script>
+        <script defer src="addSighting.js"></script>
     </head>
     <body class="container 100-vh">
         <header class="row">
@@ -45,8 +46,43 @@
             </div>
             <div class="col-3">
                 <!-- Upload sighting, filters -->
-                <a href="popup.html"><button class="btn btn-primary" type="sighting">Upload a dog sighting</button></a>
-                <p id="socket-alerts">WebSocket Here</p>
+                <div class="modal fade" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" style="display: none;" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLiveLabel">Enter the doggy data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Please stop entering bogus longitude and lattitude. There are no points associated with input validation and I'm out of time. If there is anything invalid in the databse there will be errors creating markers.</p>
+                        <div>
+                          <div class="row">
+                          <label class="form-label" for="name">Dog name &lt;string&gt;</label>
+                          <input class="form-control" type="text" id="name" name="varName" placeholder="text here" required />
+                          </div>
+                          <div class="row">
+                          <label class="form-label" for="location">Location &lt;40.2474025, 111.6541366&gt;</label>
+                          <input class="form-control" type="text" id="location" name="varLocation" placeholder="text here" required />
+                          </div>
+                          <div class="row">
+                          <label class="form-label" for="time">Time &lt;string&gt;</label>
+                          <input class="form-control" type="text" id="time" name="varTime" placeholder="text here" required />
+                          </div>
+                          <div class="row">
+                          <label class="form-label" for="breed">Breed &lt;string&gt;</label>
+                          <input class="form-control" type="text" id="breed" name="varBreed" placeholder="text here" />
+                          </div>
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id="submit" >Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Upload a dog sighting</button>
+              <p id="socket-alerts">WebSocket Here</p>
             </div>
         </main>
         <footer class="row">
